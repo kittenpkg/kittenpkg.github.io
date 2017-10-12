@@ -2,11 +2,11 @@
 
 <html>
 <head>
-<title>JavaScript file upload</title>
+<title>Kitten Package Manager</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
 var upload = function() {
-    var zip = document.getElementById("photo").file[0];
+    var zip = document.getElementById("zip").file[0];
     return false;
 };
 </script>
@@ -15,8 +15,8 @@ var upload = function() {
 
 <form action="/" method="post" onsubmit="return upload();">
   <fieldset>
-    <legend>Upload photo</legend>
-    <input type="file" name="photo" id="photo" accept=".zip">
+    <legend>Upload Module</legend>
+    <input type="file" name="photo" id="zip" accept=".zip">
     <input type="submit" value="Upload">
   </fieldset>
 </form>
