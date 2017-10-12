@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Kitten Package Manager</title>
+</head>
+<body>
+<h2>Kitten Package Manager - Upload</h2>
+<input type="file" id="fileUpload" onchange="startRead()" accept=".zip">
+<script type="text/javascript">
+function startRead(evt) {
+    var file = document.getElementById(‘file‘).files[0];
+    if (file) {
+        var text = getAsText(file);
+        alert("Name: " + file.name + "\n" + "Last Modified Date :" + file.lastModifiedDate);
+        (function () {
+var textFile = null,
+  makeTextFile = function (text) {
+    var data = new Blob([text], {type: '.zip'});
+
+    // If we are replacing a previously generated file we need to
+    // manually revoke the object URL to avoid memory leaks.
+    if (textFile !== null) {
+      window.URL.revokeObjectURL(textFile);
+    }
+
+    textFile = window.URL.createObjectURL(data);
+
+    return textFile;
+  };
+
+
+  var create = document.getElementById('create'),
+    textbox = document.getElementById('textbox');
+
+  create.addEventListener('click', function () {
+    var link = document.getElementById('downloadlink');
+    link.href = makeTextFile(textbox.value);
+    link.style.display = 'block';
+  }, false);
+})();
+    }
+}
+</script>
+<button onclick="upload()">Upload Package</button>
+</body>
+</html>
